@@ -1,0 +1,14 @@
+AV-Skillset v0.2.1 update
+
+Copy the contents of this folder over the root of aerovista-us/AV-Skillset.
+
+Files:
+- README-AEROVISTA.md (replace)
+- CHANGELOG.md (replace)
+- docs/USAGE.md (new)
+- scripts/verify-aerovista.ps1 (new)
+
+Then run:
+  .\scripts\verify-aerovista.ps1
+
+Review the GitHub diff before committing.
