@@ -1,0 +1,15 @@
+AV-Skillset AeroVista v0.2.0
+
+Modified upstream paths:
+- skills/using-superpowers/SKILL.md
+- skills/brainstorming/SKILL.md
+
+Added paths:
+- skills/aerovista-operating-mode/SKILL.md
+- skills/aerovista-system-mapping/SKILL.md
+- skills/aerovista-verification/SKILL.md
+- skills/aerovista-deployment-safety/SKILL.md
+- skills/aerovista-brand-boundaries/SKILL.md
+- skills/aerovista-operational-review/SKILL.md
+- docs/AEROVISTA_ADAPTATION.md
+- README-AEROVISTA.md

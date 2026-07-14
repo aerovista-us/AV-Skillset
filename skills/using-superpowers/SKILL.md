@@ -1,62 +1,47 @@
 ---
 name: using-superpowers
-description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
+description: AeroVista bootstrap skill. Selects an operating mode before invoking process or implementation skills and preserves user instructions, authority boundaries, and evidence requirements.
 ---
 
-<SUBAGENT-STOP>
-If you were dispatched as a subagent to execute a specific task, ignore this skill.
-</SUBAGENT-STOP>
+# Using AeroVista Superpowers
 
-<EXTREMELY-IMPORTANT>
-If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+Use skills deliberately, not ceremonially. Before acting, identify the smallest workflow that safely fits the task.
 
-IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+## First decision: operating mode
 
-This is not negotiable. You cannot rationalize your way out of this.
-</EXTREMELY-IMPORTANT>
+Invoke `aerovista-operating-mode` before any engineering action. It classifies work as:
 
-## The Rule
+1. **Quick Edit** — isolated, reversible, low-risk changes.
+2. **Controlled Change** — bounded feature or workflow changes needing a short plan and review.
+3. **Full Engineering** — production, security, authority, infrastructure, deployment, data, or cross-system changes.
 
-**Invoke relevant or requested skills BEFORE any response or action** — including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
+The selected mode determines which gates are mandatory. Do not force Full Engineering ceremony onto a typo, static copy edit, or isolated JSON correction.
 
-**Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
+## Skill priority
 
-Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
+1. User and repository instructions.
+2. AeroVista safety and authority skills.
+3. Process skills such as brainstorming or systematic debugging.
+4. Domain and implementation skills.
 
-## Skill Priority
+## Mandatory triggers
 
-When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.
+- Bug or unexplained failure → `systematic-debugging`.
+- Production or deployment work → `aerovista-deployment-safety`.
+- Existing multi-system workflow → `aerovista-system-mapping`.
+- Public brand or creator lane → `aerovista-brand-boundaries`.
+- Completion claim → `aerovista-verification`.
+- Controlled Change or Full Engineering completion → `aerovista-operational-review`.
 
-- "Let's build X" → superpowers:brainstorming first, then implementation skills.
-- "Fix this bug" → superpowers:systematic-debugging first, then domain skills.
+## Non-negotiable behavior
 
-## Red Flags
+- Do not modify unrelated files.
+- Do not invent business claims, customer data, services, prices, testimonials, or authority.
+- Do not confuse implemented, deployed, configured, enabled, and verified.
+- Do not deploy a dirty or unexplained working tree.
+- Never claim production success from a local test alone.
+- Stop when required authority, secrets, credentials, or environment access is unavailable.
 
-These thoughts mean STOP—you're rationalizing:
+## Communication
 
-| Thought | Reality |
-|---------|---------|
-| "This is just a simple question" | Questions are tasks. Check for skills. |
-| "I need more context first" | Skill check comes BEFORE clarifying questions. |
-| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
-| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
-| "Let me gather information first" | Skills tell you HOW to gather information. |
-| "This doesn't need a formal skill" | If a skill exists, use it. |
-| "I remember this skill" | Skills evolve. Read current version. |
-| "This doesn't count as a task" | Action = task. Check for skills. |
-| "The skill is overkill" | Simple things become complex. Use it. |
-| "I'll just do this one thing first" | Check BEFORE doing anything. |
-| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
-| "I know what that means" | Knowing the concept ≠ using the skill. Invoke it. |
-
-## Platform Adaptation
-
-If your harness appears here, read its reference file for special instructions:
-
-- Codex: `references/codex-tools.md`
-- Pi: `references/pi-tools.md`
-- Antigravity: `references/antigravity-tools.md`
-
-## User Instructions
-
-User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
+Announce the selected operating mode and why in one sentence. Avoid repetitive skill announcements. Keep the user informed at meaningful gates: design approval, destructive action, deployment, and verification.
